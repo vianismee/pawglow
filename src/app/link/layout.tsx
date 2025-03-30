@@ -9,7 +9,7 @@ export default function LinkLayout({
     <html lang="en">
       <body>
         <Headers />
-        <main>{children}</main>
+        <main className="px-3 py-3">{children}</main>
       </body>
     </html>
   );
