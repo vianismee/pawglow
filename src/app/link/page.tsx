@@ -3,7 +3,7 @@ import { BrownBeig } from "../font/font";
 
 export default function LinkPage() {
   return (
-    <main className="w-full flex flex-col">
+    <main className="w-full flex flex-col gap-3">
       <section
         className={`${BrownBeig.className} py-6 bg-[#4AA4DB] flex flex-col h-[200px] justify-center items-center rounded-2xl text-white relative overflow-hidden`}
       >
@@ -27,7 +27,25 @@ export default function LinkPage() {
           />
         </div>
       </section>
-      <section className="h-[1080px]"> Hello World</section>
+      <section className="flex flex-col items-center w-full gap-1">
+        <h1 className={`${BrownBeig.className} text-2xl text-sky-500`}>
+          About Us
+        </h1>
+        <p className="text-lg items-center text-center text-balance">
+          <span>
+            <Image
+              src={"/asset/bl-mainlogo.svg"}
+              width={120}
+              height={120}
+              alt="black logo"
+              className="inline"
+            />
+          </span>{" "}
+          dirancang khusus menggunakan bahan-bahan natural pet friendly untuk
+          memberikan hasil maksimal dengan bahan alami pilihan, supaya kamu bisa
+          merawat anabul kesayangan dengan mudah dan aman.
+        </p>
+      </section>
     </main>
   );
 }
