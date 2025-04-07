@@ -15,7 +15,7 @@ const Contruction = () => {
         />
         <div className="text-white flex flex-col items-center gap-2 p-3 text-center">
           <h1 className="font-bold uppercase text-2xl ">
-            WE'RE LAUNCHING SOON
+            WE&apos;RE LAUNCHING SOON
           </h1>
           <p className="font-medium font-poppins">
             Pawglow website is under contruction stay tuned for update.
