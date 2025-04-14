@@ -9,7 +9,7 @@ export default function LinkLayout({
     <html lang="en">
       <body>
         <Headers />
-        <main className="px-3 py-3">{children}</main>
+        <main className="px-3 py-3 overflow-clip w-[100%]">{children}</main>
       </body>
     </html>
   );
