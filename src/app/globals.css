@@ -1,3 +1,4 @@
+@import url("https://use.typekit.net/qsj4oje.css");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -5,6 +6,7 @@
 
 @theme {
   --font-poppins: var(--font-poppins);
+  --font-eldwin: "eldwin-script", sans-serif;
 }
 
 @theme inline {
