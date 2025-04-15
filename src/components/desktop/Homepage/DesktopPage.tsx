@@ -3,7 +3,7 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { Leaf, FlaskConicalOff, Rabbit } from "lucide-react";
 
-export const HomePage = () => {
+export const DesktopPage = () => {
   return (
     <section className="flex flex-col relative overflow-hidden">
       <main className="flex py-20 lg:flex-row flex-col px-[200px]">
@@ -82,9 +82,9 @@ export const HomePage = () => {
           >
             <p className="text-6xl font-semibold">
               perawatan terbaik{" "}
-              <span className="font-eldwin font-bold">untuk</span> hewan dengan{" "}
+              <span className="font-eldwin font-bold">untuk</span> anabul dengan{" "}
               {""}
-              <span className="font-eldwin font-bold">dengan</span>
+              <span className="font-eldwin font-bold">bahan</span>
               {""} alami
             </p>
           </Marquee>
@@ -93,7 +93,7 @@ export const HomePage = () => {
           <Marquee className="h-min w-full flex items-center py-6" speed={200}>
             <p className="text-6xl font-semibold">
               perawatan terbaik{" "}
-              <span className="font-eldwin font-bold">untuk</span> hewan dengan{" "}
+              <span className="font-eldwin font-bold">untuk</span> anabul dengan{" "}
               {""}
               <span className="font-eldwin font-bold">bahan</span>
               {""} alami
@@ -141,12 +141,6 @@ export const HomePage = () => {
             width={200}
             className="scale-400 top-28 absolute right-[100px]"
           />
-          <div className="absolute top-[190px] left-[420px] scale-150">
-            <span className="relative flex size-3">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-              <span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
-            </span>
-          </div>
         </div>
         <section className="w-[50%] flex flex-col items-start gap-4 z-10">
           <div className="px-5 py-2 font-poppins text-[15pt] font-semibold text-white rounded-full bg-[#FFAC02]">
