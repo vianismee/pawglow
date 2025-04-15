@@ -66,15 +66,15 @@ const MobileHomepage = () => {
             />
           </div>
         </div>
+        <div className="overflow-hidden w-[100%] mt-[350px]">
+          <div className="w-[130%] bg-orange-primary py-4 z-40 absolute text-white text-3xl font-bold border-4 rotate-[-0.5deg] translate-x-[-10px]">
+            <Marquee>perawatan terbaik untuk anabul dengan bahan alami</Marquee>
+          </div>
+          <div className="w-[120%] bg-[#FFAC02] py-4 z-39 absolute text-white text-3xl font-bold border-4 rotate-[2deg] translate-x-[-10px]">
+            <Marquee>perawatan terbaik untuk anabul dengan bahan alami</Marquee>
+          </div>
+        </div>
       </section>
-      <div className="overflow-hidden w-[100%] mt-[350px]">
-        <div className="w-[120%] bg-orange-primary py-4 z-40 absolute text-white text-3xl font-bold border-4 rotate-[-0.5deg]">
-          <Marquee>perawatan terbaik untuk anabul dengan bahan alami</Marquee>
-        </div>
-        <div className="w-[120%] bg-[#FFAC02] py-4 z-39 absolute text-white text-3xl font-bold border-4 rotate-[2deg]">
-          <Marquee>perawatan terbaik untuk anabul dengan bahan alami</Marquee>
-        </div>
-      </div>
     </main>
   );
 };
