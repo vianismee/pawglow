@@ -18,7 +18,7 @@ export const HomePage = () => {
               <span className="font-eldwin font-extrabold text-orange-600">
                 care
               </span>{" "}
-              product
+              solution
             </h1>
             <p className="font-poppins font-semibold text-2xl text-black/70 w-110 leading-8">
               Natural & Tech-Enhanced Pet Grooming Products untuk Anabul
@@ -74,7 +74,7 @@ export const HomePage = () => {
         </section>
       </main>
       <main className="overflow-hidden w-[100%]">
-        <div className="w-[101%] right-0 left-0 bg-[#FFAC02] h-min z-0 absolute text-white rotate-[1deg]">
+        <div className="w-[110%] right-0 left-[-10px] bg-[#FFAC02] h-min z-0 absolute text-white rotate-[1deg] border-[6px] border-white">
           <Marquee
             className="h-min w-full flex items-center py-6"
             speed={200}
@@ -89,7 +89,7 @@ export const HomePage = () => {
             </p>
           </Marquee>
         </div>
-        <div className="w-[101%] right-0 left-0 bg-[#ED581F] h-min z-10 absolute text-white rotate-[-0.5deg]">
+        <div className="w-[110%] right-0 left-[-10px] bg-[#ED581F] h-min z-10 absolute text-white rotate-[-0.5deg] border-[6px] border-white">
           <Marquee className="h-min w-full flex items-center py-6" speed={200}>
             <p className="text-6xl font-semibold">
               perawatan terbaik{" "}
@@ -101,7 +101,7 @@ export const HomePage = () => {
           </Marquee>
         </div>
       </main>
-      <main className="w-full bg-white h-min rounded-b-3xl px-[200px] py-[50px] mt-[110px]">
+      <main className="w-full bg-white h-min rounded-b-[60px] px-[200px] py-[50px] mt-[110px]">
         <div className="flex gap-3 items-center">
           <h1 className="font-semibold font-poppins text-3xl w-[30%] leading-10">
             Inspired by the <br /> Kindness of Nature
@@ -131,6 +131,36 @@ export const HomePage = () => {
             </div>
           </div>
         </div>
+      </main>
+      <main className="w-full h-min py-10 px-[200px] mt-[200px] flex justify-end relative">
+        <div className="relative w-[50%] h-min z-0">
+          <Image
+            src={"asset/eastjavamap.svg"}
+            alt="Peta Jawa"
+            height={200}
+            width={200}
+            className="scale-400 top-28 absolute right-[100px]"
+          />
+          <div className="absolute top-[190px] left-[420px] scale-150">
+            <span className="relative flex size-3">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+              <span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
+            </span>
+          </div>
+        </div>
+        <section className="w-[50%] flex flex-col items-start gap-4 z-10">
+          <div className="px-5 py-2 font-poppins text-[15pt] font-semibold text-white rounded-full bg-[#FFAC02]">
+            Hadir lebih dekat!
+          </div>
+          <div className="flex flex-col gap-10">
+            <h1 className="font-poppins font-bold text-[60pt] text-zinc-800 leading-[80px]">
+              temukan <br /> kami di petshop{" "}
+              <span className="font-eldwin font-extrabold text-orange-600">
+                sekitarmu
+              </span>{" "}
+            </h1>
+          </div>
+        </section>
       </main>
       <main className="w-full h-[1080px]"></main>
     </section>

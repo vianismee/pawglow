@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased h-min bg-[#88C6FF]`}>
         <div className="flex flex-col gap-[100px]">
           <MainNavbar />
-          <div className="">{children}</div>
+          <div>{children}</div>
         </div>
       </body>
     </html>

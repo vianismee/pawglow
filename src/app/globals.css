@@ -1,7 +1,5 @@
+/* Eldwin import form Adobe Font */
 @import url("https://p.typekit.net/p.css?s=1&k=qsj4oje&ht=tk&f=36430.36431.36432.36433&a=122659012&app=typekit&e=css");
-@import "tailwindcss";
-@import "tw-animate-css";
-
 @font-face {
   font-family: "eldwin-script";
   src: url("https://use.typekit.net/af/162f07/00000000000000007735a997/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
@@ -57,6 +55,9 @@
   font-weight: 900;
   font-stretch: normal;
 }
+
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
