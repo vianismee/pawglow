@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 
 const MobileHomepage = () => {
   return (
-    <main className="w-full flex flex-col items-center py-5 gap-4 ">
+    <main className="w-full flex flex-col items-center py-5 gap-4 h-[1920px] overflow-hidden">
       <section className="text-center flex-col flex gap-5 items-center justify-center px-[25px]">
         <div className="w-full flex items-center justify-center">
           <div className="h-min py-[8px] px-[16px] rounded-full bg-orange-primary text-white font-medium font-poppins">
@@ -66,18 +66,21 @@ const MobileHomepage = () => {
             />
           </div>
         </div>
-        <div className="overflow-hidden w-[100%] mt-[320px]">
-          <div className="w-[130%] bg-orange-primary py-4 z-40 absolute text-white text-3xl font-bold border-4 rotate-[-0.5deg] translate-x-[-10px]">
+        <div className="overflow-hidden w-screen mt-[320px]">
+          <div className="w-[110%] bg-orange-primary py-4 z-40 absolute text-white text-3xl font-bold border-4 rotate-[-0.5deg] translate-x-[-10px]">
             <Marquee className="flex gap-1" speed={100}>
               perawatan terbaik untuk anabul dengan bahan alami{" "}
             </Marquee>
           </div>
-          <div className="w-[120%] bg-[#FFAC02] py-4 z-39 absolute text-white text-3xl font-bold border-4 rotate-[2deg] translate-x-[-10px]">
+          <div className="w-[110%] bg-[#FFAC02] py-4 z-39 absolute text-white text-3xl font-bold border-4 rotate-[2deg] translate-x-[-10px]">
             <Marquee>
               perawatan terbaik untuk anabul dengan bahan alami{" "}
             </Marquee>
           </div>
         </div>
+      </section>
+      <section className="  bg-white w-full flex justify-center items-center">
+        Hello World
       </section>
     </main>
   );
