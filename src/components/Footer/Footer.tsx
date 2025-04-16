@@ -4,6 +4,7 @@ import useScreenWidth from "@/hooks/useScreenWidth";
 
 const MainFooter = () => {
   const screenWidth = useScreenWidth();
+  const getYear = new Date().getFullYear();
 
   if (screenWidth <= 750) {
     return (
@@ -20,11 +21,11 @@ const MainFooter = () => {
         </div>
         <div className="text-white text-center text-[10pt] flex flex-col gap-3">
           <h1>
-            Copyright © All Rights Reserved, <br />
-            <span className="font-bold">PAWGLOW INNOVATION LABORATORY</span>
+            {getYear}© Copyright, All Rights Reserved, <br />
+            <span className="font-bold">PAWGLOW INNOVATION LABORATORY.</span>
           </h1>
           <p className="text-white hover:underline cursor-pointer">
-            <a href="mailto:hello@pawglow.space">hello@pawglow.space</a>
+            <a href="mailto:hallo@pawglow.space">hallo@pawglow.space</a>
           </p>
         </div>
       </footer>
@@ -44,10 +45,11 @@ const MainFooter = () => {
         </div>
 
         <h1 className="font-medium text-white">
-          Copyright © All Rights Reserved, PAWGLOW INNOVATION LABORATORY
+          {getYear}© Copyright, All Rights Reserved,{" "}
+          <span className="font-bold">PAWGLOW INNOVATION LABORATORY.</span>
         </h1>
         <h1 className="text-white hover:underline cursor-pointer">
-          <a href="mailto:hello@pawglow.space">hello@pawglow.space</a>
+          <a href="mailto:hallo@pawglow.space">hallo@pawglow.space</a>
         </h1>
       </footer>
     );
