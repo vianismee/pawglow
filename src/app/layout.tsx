@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import MainNavbar from "@/components/Navbar/MainNavbar";
+import MainFooter from "@/components/Footer/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,8 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased h-min`}>
-        {children}
+      <body className={`${poppins.className} antialiased h-min bg-[#88C6FF]`}>
+        <div className="w-[100%] overflow-hidden">
+          <div className="flex flex-col items-center">
+            <MainNavbar />
+            <div>{children}</div>
+            <MainFooter />
+          </div>
+        </div>
       </body>
     </html>
   );
