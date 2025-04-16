@@ -49,12 +49,6 @@ const MainNavbar = () => {
               className="scale-130"
             />
           </div>
-          <ul className="flex gap-[48px] text-[14pt] font-bold">
-            <li>HOME</li>
-            <li>ABOUT</li>
-            <li>PRODUCT</li>
-          </ul>
-          <div>Contact Us</div>
         </main>
       </div>
     );

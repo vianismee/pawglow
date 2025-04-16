@@ -5,7 +5,7 @@ import { Leaf, FlaskConicalOff, Rabbit } from "lucide-react";
 
 export const DesktopPage = () => {
   return (
-    <section className="flex flex-col relative overflow-hidden">
+    <section className="flex flex-col relative overflow-hidden mt-[100px]">
       <main className="flex py-20 lg:flex-row flex-col px-[200px]">
         {/* Main Header Text */}
         <section className="w-[50%] flex flex-col items-start gap-4">
@@ -156,7 +156,6 @@ export const DesktopPage = () => {
           </div>
         </section>
       </main>
-      <main className="w-full h-[1080px]"></main>
     </section>
   );
 };
