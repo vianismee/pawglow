@@ -8,7 +8,7 @@ const MainFooter = () => {
 
   if (screenWidth <= 750) {
     return (
-      <footer className="w-[105%] flex flex-col items-center gap-8 justify-center bg-orange-primary pt-[25px] pb-[25px] border-t-4 border-r-4 border-l-4 border-white rounded-t-[50px] px-6">
+      <footer className="w-[100%] flex flex-col items-center gap-8 justify-center bg-orange-primary pt-[25px] pb-[25px] border-t-4 border-r-4 border-l-4 border-white rounded-t-[50px] px-6">
         <div className="text-white flex flex-col items-center gap-2">
           <h1 className="font-medium">Powered by</h1>
           <Image

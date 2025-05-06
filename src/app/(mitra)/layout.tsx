@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
-import MainNavbar from "@/components/Navbar/MainNavbar";
-import MainFooter from "@/components/Footer/Footer";
+import "@/app/globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,7 +14,7 @@ export const metadata: Metadata = {
   description: "No. 1 Pet Care Product at Indonesia",
 };
 
-export default function RootLayout({
+export default function MitraLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -24,13 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} antialiased h-min bg-[#88C6FF]`}>
-        <div className="w-[100%] overflow-hidden">
-          <div className="flex flex-col items-center">
-            <MainNavbar />
-            <div>{children}</div>
-            <MainFooter />
-          </div>
-        </div>
+        <div>{children}</div>
       </body>
     </html>
   );

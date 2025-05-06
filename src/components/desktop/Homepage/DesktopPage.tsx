@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { Leaf, FlaskConicalOff, Rabbit } from "lucide-react";
+import Link from "next/link";
 
 export const DesktopPage = () => {
   return (
@@ -154,6 +155,11 @@ export const DesktopPage = () => {
               </span>{" "}
             </h1>
           </div>
+          <Link href={"/mitra"}>
+            <div className="px-5 py-2 font-poppins text-[15pt] font-semibold hover:text-white rounded-full bg-white text-black hover:bg-[#ff8502] transition-all delay-100 ease-in-out cursor-pointer">
+              Lokasi Mitra
+            </div>
+          </Link>
         </section>
       </main>
     </section>
