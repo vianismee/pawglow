@@ -16,10 +16,14 @@ export default function Home() {
       <>
         <section className="mt-[100px] px-[200px]">
           <main className="w-full flex flex-col items-center gap-4">
-            <h1 className="font-poppins font-bold text-[60pt]">
-              mitra{" "}
+            <h1 className="font-poppins font-bold text-[40pt]">
+              kami hadir di{" "}
               <span className="font-eldwin font-black text-orange-primary">
-                kami
+                petshop{" "}
+              </span>
+              terdekat{" "}
+              <span className="font-eldwin font-black text-orange-primary">
+                mu{" "}
               </span>
             </h1>
             <div className="px-[20px] py-[20px] w-full bg-[#fffcea] rounded-2xl flex gap-[20px] flex-col ">
@@ -56,6 +60,13 @@ export default function Home() {
               ))}
             </div>
           </main>
+          <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-50">
+            <a href="/mitra/register">
+              <button className="px-8 py-3 bg-white rounded-full font-bold text-lg text-orange-primary hover:text-white hover:bg-orange-primary border-3 border-orange-primary transition-all cursor-pointer ease-in-out">
+                Join Mitra
+              </button>
+            </a>
+          </div>
         </section>
       </>
     );
