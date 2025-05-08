@@ -19,7 +19,15 @@ const jabatan = ["Owner", "Manager", "Staff"];
 
 const RegisterPage = () => {
   const [namaPetshop, setNamaPetshop] = useState("");
+  const [namaLengkap, setNamaLengkap] = useState("");
+  const [alamat, setAlamat] = useState("");
+  const [nomorWhatsApp, setNomorWhatsApp] = useState("");
+  const [isChecked, setIsChacked] = useState(false);
+  const [jabatanSelct, setJabatanSelect] = useState("");
 
+  const checked = () => {
+    setIsChacked(!isChecked);
+  };
   return (
     <section className="flex justify-center mt-10">
       <div className="flex flex-col items-center w-[40%] gap-10">
@@ -54,12 +62,15 @@ const RegisterPage = () => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <h1 className="font-bold">Nama Lengkap</h1>
-            <Input placeholder="Nama Lengkap" />
+            <h1 className="font-bold">Nama Lengkap {namaLengkap}</h1>
+            <Input
+              placeholder="Nama Lengkap"
+              onChange={(e) => setNamaLengkap(e.target.value)}
+            />
           </div>
           <div className="flex flex-col gap-2">
-            <h1 className="font-bold">Jabatan</h1>
-            <Select>
+            <h1 className="font-bold">Jabatan {jabatanSelct}</h1>
+            <Select value={jabatanSelct} onValueChange={setJabatanSelect}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Pilih Jabatan" />
               </SelectTrigger>
@@ -75,15 +86,23 @@ const RegisterPage = () => {
             </Select>
           </div>
           <div className="flex flex-col gap-2">
-            <h1 className="font-bold">Alamat Petshop</h1>
-            <Input placeholder="Alamat Petshop" />
+            <h1 className="font-bold">Alamat Petshop {alamat}</h1>
+            <Input
+              placeholder="Alamat Petshop"
+              onChange={(e) => setAlamat(e.target.value)}
+            />
           </div>
           <div className="flex flex-col gap-2">
-            <h1 className="font-bold">Nomor WhatsApp</h1>
-            <Input placeholder="Nomor WhatsApp petshop" type="number" />
+            <h1 className="font-bold">Nomor WhatsApp {nomorWhatsApp} </h1>
+            <Input
+              placeholder="Nomor WhatsApp petshop"
+              type="number"
+              onChange={(e) => setNomorWhatsApp(e.target.value.toString())}
+            />
           </div>
           <div className="flex gap-4 items-center mt-3">
             <input
+              onClick={checked}
               type="checkbox"
               className="w-[18px] h-[18px] cursor-pointer"
             />
@@ -95,7 +114,13 @@ const RegisterPage = () => {
                 Kembali
               </button>
             </Link>
-            <button className=" bg-orange-primary border-2 border-orange-primary rounded-full py-2 px-6 font-semibold cursor-pointer text-white">
+            <button
+              className={`${
+                isChecked
+                  ? "bg-orange-primary border-2 border-orange-primary rounded-full py-2 px-6 font-semibold cursor-pointer text-white"
+                  : "bg-white border-2 border-orange-primary rounded-full py-2 px-6 font-semibold cursor-not-allowed text-black"
+              }`}
+            >
               Ajukan
             </button>
           </div>

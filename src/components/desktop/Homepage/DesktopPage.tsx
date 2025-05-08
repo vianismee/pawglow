@@ -156,7 +156,7 @@ export const DesktopPage = () => {
             </h1>
           </div>
           <Link href={"/mitra"}>
-            <div className="px-5 py-2 font-poppins text-[15pt] font-semibold hover:text-white rounded-full bg-white text-black hover:bg-[#ff8502] transition-all delay-100 ease-in-out cursor-pointer">
+            <div className="px-5 py-2 font-poppins text-[15pt] font-semibold hover:text-white rounded-full bg-white text-black hover:bg-[#ff8502] transition-all delay-100 ease-in-out cursor-pointer border-3 border-[#ff8502]">
               Lokasi Mitra
             </div>
           </Link>

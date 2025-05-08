@@ -1,6 +1,8 @@
 "use client";
 import { listMitra } from "@/data";
 import useScreenWidth from "@/hooks/useScreenWidth";
+import { CircleChevronLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const screenWidth = useScreenWidth();
@@ -60,9 +62,18 @@ export default function Home() {
               ))}
             </div>
           </main>
-          <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-50">
+          <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-50 flex items-center gap-3">
+            <div className="bg-white rounded-full hover:rotate-50 transition cursor-pointer delay-200">
+              <Link href={"/"}>
+                <CircleChevronLeft
+                  height={60}
+                  width={60}
+                  className="text-orange-primary"
+                />
+              </Link>
+            </div>
             <a href="/mitra/register">
-              <button className="px-8 py-3 bg-white rounded-full font-bold text-lg text-orange-primary hover:text-white hover:bg-orange-primary border-3 border-orange-primary transition-all cursor-pointer ease-in-out">
+              <button className="px-8 py-3 bg-white rounded-full font-bold text-lg text-orange-primary hover:text-white hover:bg-orange-primary border-4 border-orange-primary transition-all cursor-pointer ease-in-out">
                 Join Mitra
               </button>
             </a>
