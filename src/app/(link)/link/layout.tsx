@@ -1,4 +1,4 @@
-import Headers from "./components/Headers";
+import Headers from "../components/Headers";
 
 export default function LinkLayout({
   children,

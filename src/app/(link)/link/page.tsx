@@ -1,5 +1,5 @@
+import { BrownBeig } from "@/app/font/font";
 import Image from "next/image";
-import { BrownBeig } from "../font/font";
 
 export default function LinkPage() {
   return (
