@@ -133,6 +133,13 @@ const MobileHomepage = () => {
             sekitarmu{" "}
           </span>
         </h1>
+        <div className="flex justify-center items-center">
+          <a href="/mitra">
+            <button className="bg-[#ff8502] px-8 py-2 font-bold rounded-full text-white">
+              Lokasi Mitra
+            </button>
+          </a>
+        </div>
         <p className="w-[70%] font-semibold"></p>
         <div className="w-full h-full">
           <Image
