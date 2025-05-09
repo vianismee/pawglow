@@ -72,11 +72,9 @@ export default function Home() {
                 />
               </Link>
             </div>
-            <a href="/mitra/register">
-              <button className="px-8 py-3 bg-white rounded-full font-bold text-lg text-orange-primary hover:text-white hover:bg-orange-primary border-4 border-orange-primary transition-all cursor-pointer ease-in-out">
-                Join Mitra
-              </button>
-            </a>
+            <button className="px-8 py-3 bg-white rounded-full font-bold text-lg text-orange-primary hover:text-white hover:bg-orange-primary border-4 border-orange-primary transition-all cursor-not-allowed ease-in-out">
+              Join Mitra
+            </button>
           </div>
         </section>
       </>
