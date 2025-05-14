@@ -1,7 +1,23 @@
+"use client";
 import React from "react";
+import MobilePage from "./components/MobilePage";
+import DesktopPage from "./components/DesktopPage";
+import useScreenWidth from "@/hooks/useScreenWidth";
 
-const VerifyPage = () => {
-  return <div>VerifyPage</div>;
-};
+export default function Home() {
+  const screenWidth = useScreenWidth();
 
-export default VerifyPage;
+  if (screenWidth <= 750) {
+    return (
+      <>
+        <MobilePage />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <DesktopPage />
+      </>
+    );
+  }
+}
