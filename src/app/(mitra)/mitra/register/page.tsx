@@ -9,28 +9,69 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { IMitra } from "@/types/mitra";
 
 import { ShieldUser } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { FormEvent, useState } from "react";
+import supabase from "../../../../../lib/db";
+import {
+  Dialog,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogContent,
+} from "@/components/ui/dialog";
 
 const jabatan = ["Owner", "Manager", "Staff"];
 
 const RegisterPage = () => {
-  const [namaPetshop, setNamaPetshop] = useState("");
-  const [namaLengkap, setNamaLengkap] = useState("");
-  const [alamat, setAlamat] = useState("");
-  const [nomorWhatsApp, setNomorWhatsApp] = useState("");
+  const router = useRouter();
   const [isChecked, setIsChacked] = useState(false);
-  const [jabatanSelct, setJabatanSelect] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isMitra, setIsMitra] = useState<IMitra[]>([]);
+
+  const [verifyCode] = useState(Math.floor(Math.random() * 9000) + 1000);
 
   const checked = () => {
     setIsChacked(!isChecked);
   };
+
+  const handleInputMitra = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const formValue = Object.fromEntries(formData);
+
+    const dataToSubmit = {
+      ...formValue,
+      verifycode: verifyCode.toString(),
+    };
+    try {
+      const { data, error } = await supabase
+        .from("mitra")
+        .insert(dataToSubmit)
+        .select("*");
+
+      if (error) console.log("error: ", error);
+      else {
+        if (data) {
+          setIsMitra(data);
+          console.log("data: ", isMitra);
+          // Refresh page after successful submission
+          router.refresh();
+        }
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
   return (
     <section className="flex justify-center mt-10">
-      <div className="flex flex-col items-center w-[40%] gap-10">
+      <div className="flex flex-col items-center lg:w-[40%] w-full gap-10">
         <Link href={"/"}>
           <div>
             <Image
@@ -54,76 +95,121 @@ const RegisterPage = () => {
               disalahgunakan
             </h1>
           </div>
-          <div className="flex flex-col gap-2">
-            <h1 className="font-bold">Nama Petshop {namaPetshop}</h1>
-            <Input
-              placeholder="Nama Petshop"
-              onChange={(e) => setNamaPetshop(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <h1 className="font-bold">Nama Lengkap {namaLengkap}</h1>
-            <Input
-              placeholder="Nama Lengkap"
-              onChange={(e) => setNamaLengkap(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <h1 className="font-bold">Jabatan {jabatanSelct}</h1>
-            <Select value={jabatanSelct} onValueChange={setJabatanSelect}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Pilih Jabatan" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {jabatan.map((jabatan, index) => (
-                    <SelectItem key={index} value={jabatan}>
-                      {jabatan}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex flex-col gap-2">
-            <h1 className="font-bold">Alamat Petshop {alamat}</h1>
-            <Input
-              placeholder="Alamat Petshop"
-              onChange={(e) => setAlamat(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <h1 className="font-bold">Nomor WhatsApp {nomorWhatsApp} </h1>
-            <Input
-              placeholder="Nomor WhatsApp petshop"
-              type="number"
-              onChange={(e) => setNomorWhatsApp(e.target.value.toString())}
-            />
-          </div>
-          <div className="flex gap-4 items-center mt-3">
-            <input
-              onClick={checked}
-              type="checkbox"
-              className="w-[18px] h-[18px] cursor-pointer"
-            />
-            <p className="text-[12pt]">Saya setuju dengan Syarat & Ketentuan</p>
-          </div>
-          <div className="flex mt-7 items-center gap-4">
-            <Link href={"/mitra"}>
-              <button className=" rounded-full py-2 px-6 font-semibold cursor-pointer">
-                Kembali
-              </button>
-            </Link>
-            <button
-              className={`${
-                isChecked
-                  ? "bg-orange-primary border-2 border-orange-primary rounded-full py-2 px-6 font-semibold cursor-pointer text-white"
-                  : "bg-white border-2 border-orange-primary rounded-full py-2 px-6 font-semibold cursor-not-allowed text-black"
-              }`}
-            >
-              Ajukan
-            </button>
-          </div>
+          <form onSubmit={handleInputMitra} className="gap-3 flex flex-col">
+            <div className="flex flex-col gap-2">
+              <h1 className="font-bold">Nama Petshop</h1>
+              <Input
+                id="namapetshop"
+                name="namapetshop"
+                required
+                placeholder="Nama Petshop"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <h1 className="font-bold">Nama Lengkap</h1>
+              <Input
+                id="namalengkap"
+                name="namalengkap"
+                required
+                placeholder="Nama Lengkap"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <h1 className="font-bold">Jabatan</h1>
+              <Select name="jabatan" required>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Pilih Jabatan" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {jabatan.map((jabatan, index) => (
+                      <SelectItem key={index} value={jabatan}>
+                        {jabatan}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h1 className="font-bold">Alamat Petshop</h1>
+              <Input
+                id="alamat"
+                name="alamat"
+                required
+                placeholder="Alamat Petshop"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <h1 className="font-bold">Nomor WhatsApp</h1>
+              <Input
+                id="nomorwhatsapp"
+                name="nomorwhatsapp"
+                required
+                placeholder="Nomor WhatsApp petshop"
+                type="number"
+              />
+            </div>
+            <div className="flex gap-4 items-center mt-3">
+              <input
+                onClick={checked}
+                type="checkbox"
+                className="w-[18px] h-[18px] cursor-pointer"
+              />
+              <p className="text-[12pt]">
+                Saya setuju dengan Syarat & Ketentuan
+              </p>
+            </div>
+            <div className="flex mt-7 items-center gap-4">
+              <Link href={"/mitra"}>
+                <button className=" rounded-full py-2 px-6 font-semibold cursor-pointer">
+                  Kembali
+                </button>
+              </Link>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger disabled={!isChecked}>
+                  <button
+                    className={`bg-white border-2 border-orange-primary rounded-full py-2 px-6 font-semibold ${
+                      !isChecked
+                        ? "cursor-not-allowed opacity-50"
+                        : "cursor-pointer"
+                    } text-black`}
+                  >
+                    Ajukan
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="flex items-center flex-col">
+                  <DialogHeader>
+                    <DialogTitle>Kode Registrasi</DialogTitle>
+                  </DialogHeader>
+                  <DialogDescription className="w-full text-center px-6">
+                    <div className="flex flex-col justify-center items-center gap-3">
+                      <h1 className="font-bold text-3xl text-black">
+                        {verifyCode}
+                      </h1>
+                      <p className="text-[12pt]">
+                        Kami akan melakukan peninjauan pengajuan maksimal 3 hari
+                        kerja. Kode ini juga digunakan sebagai kode mitra.
+                      </p>
+                      <button
+                        id="verifycode"
+                        name="verifycode"
+                        value={verifyCode}
+                        type="submit"
+                        onClick={() => {
+                          setIsDialogOpen(false);
+                          router.push("/");
+                        }}
+                        className="px-2 py-3 flex justify-center bg-orange-primary w-full text-white rounded-[4px] font-bold"
+                      >
+                        KONFIRMASI
+                      </button>
+                    </div>
+                  </DialogDescription>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </form>
         </div>
       </div>
     </section>
