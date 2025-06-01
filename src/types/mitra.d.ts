@@ -5,6 +5,7 @@ interface IMitra {
     alamat: string;
     nomorwhatsapp: number;
     jabatan: string;
+    maplink: string;
 }
 
 export type {IMitra};

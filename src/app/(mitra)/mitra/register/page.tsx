@@ -51,7 +51,7 @@ const RegisterPage = () => {
 
   return (
     <section className="flex justify-center mt-10">
-      <div className="flex flex-col items-center w-[40%] gap-10">
+      <div className="flex flex-col items-center lg:w-[40%] w-full gap-10">
         <Link href={"/"}>
           <div>
             <Image
