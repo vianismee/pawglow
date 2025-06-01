@@ -14,14 +14,27 @@ import { IMitra } from "@/types/mitra";
 import { ShieldUser } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import supabase from "../../../../../lib/db";
+import {
+  Dialog,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogContent,
+} from "@/components/ui/dialog";
 
 const jabatan = ["Owner", "Manager", "Staff"];
 
 const RegisterPage = () => {
+  const router = useRouter();
   const [isChecked, setIsChacked] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isMitra, setIsMitra] = useState<IMitra[]>([]);
+
+  const [verifyCode] = useState(Math.floor(Math.random() * 9000) + 1000);
 
   const checked = () => {
     setIsChacked(!isChecked);
@@ -30,18 +43,25 @@ const RegisterPage = () => {
   const handleInputMitra = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    const formValue = Object.fromEntries(formData);
 
+    const dataToSubmit = {
+      ...formValue,
+      verifycode: verifyCode.toString(),
+    };
     try {
       const { data, error } = await supabase
         .from("mitra")
-        .insert(Object.fromEntries(formData))
-        .select();
+        .insert(dataToSubmit)
+        .select("*");
 
       if (error) console.log("error: ", error);
       else {
         if (data) {
           setIsMitra(data);
           console.log("data: ", isMitra);
+          // Refresh page after successful submission
+          router.refresh();
         }
       }
     } catch (error) {
@@ -146,16 +166,48 @@ const RegisterPage = () => {
                   Kembali
                 </button>
               </Link>
-              <button
-                type="submit"
-                className={`${
-                  isChecked
-                    ? "bg-orange-primary border-2 border-orange-primary rounded-full py-2 px-6 font-semibold cursor-pointer text-white"
-                    : "bg-white border-2 border-orange-primary rounded-full py-2 px-6 font-semibold cursor-not-allowed text-black"
-                }`}
-              >
-                Ajukan
-              </button>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger disabled={!isChecked}>
+                  <button
+                    className={`bg-white border-2 border-orange-primary rounded-full py-2 px-6 font-semibold ${
+                      !isChecked
+                        ? "cursor-not-allowed opacity-50"
+                        : "cursor-pointer"
+                    } text-black`}
+                  >
+                    Ajukan
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="flex items-center flex-col">
+                  <DialogHeader>
+                    <DialogTitle>Kode Registrasi</DialogTitle>
+                  </DialogHeader>
+                  <DialogDescription className="w-full text-center px-6">
+                    <div className="flex flex-col justify-center items-center gap-3">
+                      <h1 className="font-bold text-3xl text-black">
+                        {verifyCode}
+                      </h1>
+                      <p className="text-[12pt]">
+                        Kami akan melakukan peninjauan pengajuan maksimal 3 hari
+                        kerja. Kode ini juga digunakan sebagai kode mitra.
+                      </p>
+                      <button
+                        id="verifycode"
+                        name="verifycode"
+                        value={verifyCode}
+                        type="submit"
+                        onClick={() => {
+                          setIsDialogOpen(false);
+                          router.push("/");
+                        }}
+                        className="px-2 py-3 flex justify-center bg-orange-primary w-full text-white rounded-[4px] font-bold"
+                      >
+                        KONFIRMASI
+                      </button>
+                    </div>
+                  </DialogDescription>
+                </DialogContent>
+              </Dialog>
             </div>
           </form>
         </div>
