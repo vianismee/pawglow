@@ -3,6 +3,8 @@
 import { IMitra } from "@/types/mitra";
 import React, { useEffect, useState } from "react";
 import supabase from "../../../../../lib/db";
+import Link from "next/link";
+import { CircleChevronLeft } from "lucide-react";
 
 const MobileMitra = () => {
   const [isMitra, setIsMitra] = useState<IMitra[]>([]);
@@ -60,6 +62,20 @@ const MobileMitra = () => {
             </button>
           </main>
         ))}
+      <div className="flex items-center gap-3 mb-4">
+        <div className="bg-white rounded-full hover:rotate-50 transition cursor-pointer delay-200">
+          <Link href={"/"}>
+            <CircleChevronLeft
+              height={60}
+              width={60}
+              className="text-orange-primary"
+            />
+          </Link>
+        </div>
+        <button className="px-8 py-3 bg-white rounded-full font-bold text-lg text-orange-primary hover:text-white hover:bg-orange-primary border-4 border-orange-primary transition-all cursor-pointer ease-in-out">
+          <Link href={"/mitra/register"}>Join Mitra</Link>
+        </button>
+      </div>
     </section>
   );
 };
