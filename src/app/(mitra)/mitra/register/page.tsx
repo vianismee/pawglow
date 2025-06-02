@@ -25,7 +25,7 @@ import {
   DialogTrigger,
   DialogContent,
 } from "@/components/ui/dialog";
-
+import { customAlphabet } from "nanoid";
 const jabatan = ["Owner", "Manager", "Staff"];
 
 const RegisterPage = () => {
@@ -34,7 +34,10 @@ const RegisterPage = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isMitra, setIsMitra] = useState<IMitra[]>([]);
 
-  const [verifyCode] = useState(Math.floor(Math.random() * 9000) + 1000);
+  const [verifyCode] = useState(() => {
+    const nanoid = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", 7);
+    return nanoid();
+  });
 
   const checked = () => {
     setIsChacked(!isChecked);
@@ -195,10 +198,9 @@ const RegisterPage = () => {
                         id="verifycode"
                         name="verifycode"
                         value={verifyCode}
-                        type="submit"
                         onClick={() => {
                           setIsDialogOpen(false);
-                          router.push("/");
+                          router.push("/mitra");
                         }}
                         className="px-2 py-3 flex justify-center bg-orange-primary w-full text-white rounded-[4px] font-bold"
                       >
