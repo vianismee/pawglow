@@ -3,11 +3,11 @@ import MitraCard from "../components/MitraCards";
 import MitraNotFound from "../components/MitraNotFound";
 
 interface PageProps {
-  params: { verifycode: string };
+  params: Promise<{ verifycode: string }>;
 }
 
 export default async function Page({ params }: PageProps) {
-  const { verifycode } = params;
+  const { verifycode } = await params;
   const { data: mitra } = await supabase
     .from("mitra")
     .select("*")
