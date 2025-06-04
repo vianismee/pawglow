@@ -102,7 +102,6 @@ const DesktopMitra = () => {
                   <h1 className="font-bold">Masukkan Kode Mitra</h1>
                 </DialogTitle>
               </DialogHeader>
-              <h1>{isMitraCode}</h1>
               <InputOTP
                 maxLength={7}
                 className="upercase"
