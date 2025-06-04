@@ -6,11 +6,11 @@ import { MapPin, Phone, QrCode } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 
 interface MitraCardProps {
-  MitraData: IMitra;
+  mitra: IMitra;
 }
 
-export default function MitraCard({ MitraData }: MitraCardProps) {
-  const [isMitra] = useState<IMitra>(MitraData);
+export default function MitraCard({ mitra }: MitraCardProps) {
+  const [isMitra] = useState<IMitra>(mitra);
   return (
     <section className="flex w-screen h-screen items-center justify-center">
       <div className="bg-orange-primary text-white py-10 px-10 flex gap-4 items-center rounded-[40px]">

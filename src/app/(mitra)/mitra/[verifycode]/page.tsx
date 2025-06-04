@@ -17,5 +17,5 @@ export default async function Mitra({ params }: MitraPageProps) {
   if (!mitra) {
     return <MitraNotFound verifycode={verifycode}></MitraNotFound>;
   }
-  return <MitraCard MitraData={mitra}></MitraCard>;
+  return <MitraCard mitra={mitra}></MitraCard>;
 }
