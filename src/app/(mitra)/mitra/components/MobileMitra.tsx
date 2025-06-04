@@ -5,9 +5,19 @@ import React, { useEffect, useState } from "react";
 import supabase from "../../../../../lib/db";
 import Link from "next/link";
 import { CircleChevronLeft } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { InputOTP, InputOTPSlot } from "@/components/ui/input-otp";
 
 const MobileMitra = () => {
   const [isMitra, setIsMitra] = useState<IMitra[]>([]);
+  const [isMitraCode, setIsMitraCode] = useState("");
+
   useEffect(() => {
     const fetchMitra = async () => {
       const { data, error } = await supabase.from("mitra").select("*");
@@ -72,9 +82,47 @@ const MobileMitra = () => {
             />
           </Link>
         </div>
-        <button className="px-8 py-3 bg-white rounded-full font-bold text-lg text-orange-primary hover:text-white hover:bg-orange-primary border-4 border-orange-primary transition-all cursor-pointer ease-in-out">
+        <button className="px-1 py-1 bg-white rounded-full font-bold text-lg text-orange-primary hover:text-white hover:bg-orange-primary border-4 border-orange-primary transition-all cursor-pointer ease-in-out">
           <Link href={"/mitra/register"}>Join Mitra</Link>
         </button>
+        <Dialog>
+          <DialogTrigger>
+            <button className="px-1 py-1 bg-white rounded-full font-bold text-lg text-orange-primary hover:text-white hover:bg-orange-primary border-4 border-orange-primary transition-all cursor-pointer ease-in-out">
+              Verifikasi Mitra
+            </button>
+          </DialogTrigger>
+          <DialogContent className="flex justify-center flex-col items-center gap-4">
+            <DialogHeader className="">
+              <DialogTitle>
+                <h1 className="font-bold">Masukkan Kode Mitra</h1>
+              </DialogTitle>
+            </DialogHeader>
+            <InputOTP
+              maxLength={7}
+              className="upercase"
+              required
+              value={isMitraCode}
+              onChange={(isMitraCode) =>
+                setIsMitraCode(isMitraCode.toUpperCase())
+              }
+            >
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
+              <InputOTPSlot index={2} />
+              <InputOTPSlot index={3} />
+              <InputOTPSlot index={4} />
+              <InputOTPSlot index={5} />
+              <InputOTPSlot index={6} />
+            </InputOTP>
+            <div className="w-[50%]">
+              <Link href={`/mitra/${isMitraCode}`}>
+                <button className="w-full bg-orange-primary rounded-[5px] py-2 font-bold text-white ">
+                  Konformasi
+                </button>
+              </Link>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

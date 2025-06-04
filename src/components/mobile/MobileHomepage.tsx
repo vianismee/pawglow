@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Marquee from "react-fast-marquee";
 import { Leaf, FlaskConicalOff, Rabbit } from "lucide-react";
+import Link from "next/link";
 
 const MobileHomepage = () => {
   return (
@@ -134,11 +135,11 @@ const MobileHomepage = () => {
           </span>
         </h1>
         <div className="flex justify-center items-center">
-          <a href="/mitra">
+          <Link href="/mitra">
             <button className="bg-[#ff8502] px-8 py-2 font-bold rounded-full text-white">
               Lokasi Mitra
             </button>
-          </a>
+          </Link>
         </div>
         <p className="w-[70%] font-semibold"></p>
         <div className="w-full h-full">
