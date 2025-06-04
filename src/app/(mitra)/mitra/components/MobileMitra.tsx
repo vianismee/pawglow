@@ -13,7 +13,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { InputOTP, InputOTPSlot } from "@/components/ui/input-otp";
-import { type } from "../../../../types/mitra";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 
 const MobileMitra = () => {
