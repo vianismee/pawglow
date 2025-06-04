@@ -9,6 +9,7 @@ import {
   Dialog,
   DialogContent,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { InputOTP, InputOTPSlot } from "@/components/ui/input-otp";
@@ -28,9 +29,9 @@ const DesktopMitra = () => {
 
   return (
     <>
-      <section className="mt-[50px] px-[200px]">
+      <section className="mt-[50px] px-[200px] flex flex-col gap-10 justify-center items-center mb-[50px]">
         <main className="w-full flex flex-col items-center gap-4">
-          <h1 className="font-poppins font-bold text-[40pt]">
+          <h1 className="font-poppins font-bold text-[35pt]">
             kami hadir di{" "}
             <span className="font-eldwin font-black text-orange-primary">
               petshop{" "}
@@ -76,7 +77,7 @@ const DesktopMitra = () => {
               ))}
           </div>
         </main>
-        <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 z-50 flex items-center gap-3">
+        <div className="bottom-5 flex items-center gap-3">
           <div className="bg-white rounded-full hover:rotate-50 transition cursor-pointer delay-200">
             <Link href={"/"}>
               <CircleChevronLeft
@@ -97,12 +98,15 @@ const DesktopMitra = () => {
             </DialogTrigger>
             <DialogContent className="flex justify-center flex-col items-center gap-4">
               <DialogHeader className="">
-                <h1 className="font-bold">Masukkan Kode Mitra</h1>
+                <DialogTitle>
+                  <h1 className="font-bold">Masukkan Kode Mitra</h1>
+                </DialogTitle>
               </DialogHeader>
-              <h2>{isMitraCode}</h2>
+              <h1>{isMitraCode}</h1>
               <InputOTP
                 maxLength={7}
                 className="upercase"
+                required
                 value={isMitraCode}
                 onChange={(isMitraCode) =>
                   setIsMitraCode(isMitraCode.toUpperCase())

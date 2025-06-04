@@ -1,5 +1,6 @@
 import supabase from "../../../../../lib/db";
 import MitraCard from "../components/MitraCards";
+import MitraNotFound from "../components/MitraNotFound";
 
 export default async function Mitra({
   params: { verifycode },
@@ -12,5 +13,8 @@ export default async function Mitra({
     .match({ verifycode })
     .single();
 
+  if (!mitra) {
+    return <MitraNotFound verifycode={verifycode}></MitraNotFound>;
+  }
   return <MitraCard MitraData={mitra}></MitraCard>;
 }
