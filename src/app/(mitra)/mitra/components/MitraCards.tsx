@@ -14,7 +14,7 @@ interface MitraCardProps {
 export default function MitraCard({ mitra }: MitraCardProps) {
   const [isMitra] = useState<IMitra>(mitra);
   return (
-    <section className="flex flex-col w-screen h-screen items-center justify-center gap-5">
+    <section className="flex flex-col h-min w-full md:w-screen md:h-screen items-center justify-center gap-5 mt-6 md:mt-0 mb-6 md:mb-0">
       <div className="bg-orange-primary text-white px-5 py-5 md:py-10 md:px-10 flex flex-col md:flex-row gap-4 items-center rounded-[20px] md:rounded-[40px]">
         <div className="flex flex-col gap-10 w-[300px] md:w-[450px] justify-center items-center md:justify-start md:items-start">
           <Image
