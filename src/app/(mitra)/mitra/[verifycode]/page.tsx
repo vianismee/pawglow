@@ -2,11 +2,12 @@ import supabase from "../../../../../lib/db";
 import MitraCard from "../components/MitraCards";
 import MitraNotFound from "../components/MitraNotFound";
 
-export default async function Mitra({
-  params: { verifycode },
-}: {
+interface MitraPageProps {
   params: { verifycode: string };
-}) {
+}
+
+export default async function Mitra({ params }: MitraPageProps) {
+  const { verifycode } = params;
   const { data: mitra } = await supabase
     .from("mitra")
     .select("*")
